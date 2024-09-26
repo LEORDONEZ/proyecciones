@@ -1,2 +1,0 @@
-# proyecciones
-calcula proyecciones (Acueductos)

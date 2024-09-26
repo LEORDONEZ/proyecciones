@@ -3,59 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cálculos de Proyección de Población</title>
+    <title>Cálculo de Población Futura</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Proyección de Población</h1>
+        <h1>Proyección de Población Futura</h1>
 
-        <!-- Sección para ingresar el año actual -->
         <label for="añoActual">Ingresa el año actual:</label>
-        <input type="number" id="añoActual">
+        <input type="number" id="añoActual" required><br><br>
 
-        <!-- Sección para ingresar la cantidad de datos -->
-        <label for="cantidadDatos">Cantidad de datos que desea ingresar:</label>
-        <input type="number" id="cantidadDatos">
+        <label for="cantidadDatos">Cantidad de años y poblaciones a ingresar:</label>
+        <input type="number" id="cantidadDatos" required><br><br>
 
-        <!-- Botón para generar la tabla de años y poblaciones -->
-        <button onclick="generarTabla()">Generar Tabla</button>
+        <button class="btn" onclick="generarInputs()">Generar Campos</button>
 
-        <!-- Tabla dinámica para ingresar los datos -->
-        <div id="inputsContainer">
-            <table id="dataInputTable">
-                <thead>
-                    <tr>
-                        <th>Año</th>
-                        <th>Población</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Se agregarán filas dinámicamente -->
-                </tbody>
-            </table>
+        <div id="datos" class="input-group">
+            <!-- Campos dinámicos para los años y las poblaciones -->
         </div>
 
-        <!-- Botón para realizar los cálculos -->
-        <button onclick="realizarCalculos()">Calcular</button>
+        <button class="btn calcular" onclick="calcularProyecciones()">Calcular Proyecciones</button>
 
-        <!-- Sección para mostrar los resultados -->
-        <h2>Resultados</h2>
-        <table id="resultados">
-            <thead>
-                <tr>
-                    <th>Año</th>
-                    <th>Método Aritmético</th>
-                    <th>Método Exponencial</th>
-                    <th>Método Geométrico</th>
-                    <th>Promedio</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Los resultados se mostrarán aquí -->
-            </tbody>
-        </table>
+        <div id="resultados">
+            <!-- Resultados serán mostrados aquí -->
+        </div>
+        <button class="btn" id="paso2-btn" style="display:none;" onclick="irPaso2()">Paso 2</button>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>

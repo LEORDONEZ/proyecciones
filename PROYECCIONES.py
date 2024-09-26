@@ -54,8 +54,9 @@ for i in range(len(futuro)):
 for i in range(len(diferencia)):
     resultado = ultimopoblacion + promedio * diferencia[i]
     pf.append(resultado)
-
+print("metodo aritmetico")
 print("Datos ingresados: \n")
+print("METODO ARITMETICO#####")
 print(f"El m promedio es {round(promedio, 2)}")
 for i in range(n):
     if i < len(m):  # Mientras el índice sea válido para 'm'
@@ -78,9 +79,10 @@ print(f"El valor de k promedio es {prom_exp}")
 for i in range(len(futuro)):
     resultado = poblaciones[0] * math.exp(prom_exp * (futuro[i] - años[0]))
     pf2.append(round(resultado))
-
+print("Metodo exponencial##########")
+print("año    población")
 for i in range(len(futuro)):
-    print(f"El valor futuro con el metodo exponencial es: \n población en el año {futuro[i]}, es {pf2[i]}")
+    print(f"\n  {futuro[i]}, es {pf2[i]}")
 
 ######################METODO GEOMETRICO##########################################
 r = []
@@ -94,27 +96,45 @@ print(r)
 matriz_resultados = []
 
 for j in range(len(r)):
-    fila=[]
+    fila = []
     for i in range(len(futuro)):
-        resultado = poblaciones [-1]*(1+r[j]) ** (futuro[i] - años[-1])
-        fila.append(resultado)
+        resultado = poblaciones[-1]*(1+r[j])**(futuro[i]-años[-1])
+        fila.append(round(resultado))
     matriz_resultados.append(fila)
+#Diccionario para almacenar las variables dinámicas
+print("Metodo geometrico #######")
+variables = {}
+for i, fila in enumerate(matriz_resultados):
+    variables[f'a{i+1}'] = fila
+print(f"Año  |Población  |      r      |   {futuro[0]}|{futuro[1]}|{futuro[2]}|{futuro[3]}|{futuro[4]}|{futuro[5]}")
+for i, valor in enumerate(variables.values()):
+    # Evitar imprimir el último elemento de años y población
+    if i < len(años) - 1:
+        print(f"{años[i]}|       {poblaciones[i]}", end=" ")
+    else:
+        print("-: -", end=" ")
+    
+    # Imprimir los valores de r y variables
+    if i < len(r):
+        print(f" |  {round(r[i],4)}     | {valor}")
+    else:
+        print(f"-: {valor}")
+    
 
-for fila in matriz_resultados:
-    print(fila)
 
+# Calcular el promedio de cada columna
 promedios_columnas = []
-for col in range(len(futuro)):
+for col in range(len(futuro)):  # Recorrer cada columna
     suma_columna = 0
-    for fila in matriz_resultados:
+    for fila in matriz_resultados:  # Recorrer cada fila en esa columna
         suma_columna += fila[col]
-    promedio = suma_columna / len(r)
+    promedio = suma_columna / len(r)  # Dividir por la cantidad de filas (3)
     promedios_columnas.append(promedio)
 
-# Mostrar los promedios de cada columna
-print("\nPromedios de cada columna:")
 for i in range(len(promedios_columnas)):
-    print(f"Año {futuro[i]}: {round(promedios_columnas[i])}")
+    promedios_columnas[i]= round(promedios_columnas[i])
+
+print(f"Promedio                       |{promedios_columnas}")
 
 ######################################### promedio de los metodos ######################
 print("\nPromedios de todos los metodos:")
